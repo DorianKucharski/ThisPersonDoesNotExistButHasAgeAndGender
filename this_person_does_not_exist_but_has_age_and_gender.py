@@ -51,8 +51,9 @@ def get_person(r_gender, r_age):
         gender, age_min, age_max = recognize_gender_and_age(filename)
 
         if r_gender == gender and age_min < r_age < age_max:
-            os.rename(filename, r_gender + "_" + str(r_age) + "_" + filename)
-            return
+            new_filename = r_gender + "_" + str(r_age) + "_" + filename
+            os.rename(filename, new_filename)
+            return new_filename
         else:
             os.remove(filename)
 
